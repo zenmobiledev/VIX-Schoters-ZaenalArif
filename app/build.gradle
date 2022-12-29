@@ -22,6 +22,7 @@ android {
     }
     buildFeatures {
         viewBinding true
+        dataBinding true
     }
     buildTypes {
         release {
@@ -72,6 +73,9 @@ dependencies {
 
     def shimmerVersion = "0.5.0"
     implementation("com.facebook.shimmer:shimmer:$shimmerVersion")
+
+    def refreshLayoutVersion = "1.1.0"
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:$refreshLayoutVersion")
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
