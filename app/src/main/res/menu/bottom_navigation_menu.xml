@@ -5,23 +5,23 @@
         android:id="@+id/breakingNewsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_news"
-        android:title="News" />
+        android:title="@string/title_botnav_news" />
 
     <item
         android:id="@+id/searchNewsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_news_search"
-        android:title="Search" />
+        android:title="@string/title_botnav_search" />
 
     <item
         android:id="@+id/savedNewsFragment"
         android:enabled="true"
         android:icon="@drawable/ic_saved"
-        android:title="Saved" />
+        android:title="@string/title_botnav_saved" />
 
     <item
         android:id="@+id/aboutFragment"
         android:enabled="true"
         android:icon="@drawable/ic_about"
-        android:title="About" />
+        android:title="@string/title_botnav_about" />
 </menu>

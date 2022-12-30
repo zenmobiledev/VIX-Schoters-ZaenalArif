@@ -3,4 +3,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tv_image_article">Image article</string>
+    <string name="title_botnav_news">News</string>
+    <string name="title_botnav_search">Search</string>
+    <string name="title_botnav_saved">Saved</string>
+    <string name="title_botnav_about">About</string>
 </resources>
