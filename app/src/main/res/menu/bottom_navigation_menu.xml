@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/breakingNewsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_news"
+        android:title="News" />
+
+    <item
+        android:id="@+id/searchNewsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_news_search"
+        android:title="Search" />
+
+    <item
+        android:id="@+id/savedNewsFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_saved"
+        android:title="Saved" />
+
+    <item
+        android:id="@+id/aboutFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_about"
+        android:title="About" />
+</menu>

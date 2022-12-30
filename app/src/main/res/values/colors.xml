@@ -7,4 +7,14 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="colorPrimary">#282b33</color>
+    <color name="colorPrimaryDark">#282b33</color>
+    <color name="colorAccent">#FF9800</color>
+    <color name="colorAccentDark">#875000</color>
+    <color name="titleTextColor">#131214</color>
+    <color name="subTitleTextColor">#333233</color>
+    <color name="backgroundLineColor">#606470</color>
+    <color name="background">#dddddd</color>
+    <color name="card_color">#2e343d</color>
 </resources>

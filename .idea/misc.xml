@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/drawable/bg_rounded.xml" value="0.1505" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/drawable/ic_baseline_bookmark_border_24.xml" value="0.1505" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/drawable/selector.xml" value="0.1505" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/layout/fragment_bookmark_news.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/layout/fragment_breaking_news.xml" value="0.18" />
+        <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/layout/item_article.xml" value="0.22" />
         <entry key="..\:/Users/zaena/OneDrive/Documents/Schoters/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.203125" />
       </map>
     </option>

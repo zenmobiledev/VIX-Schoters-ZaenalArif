@@ -3,7 +3,6 @@ package com.schoters.newsapp.utils
 import android.content.Context
 import android.content.Intent
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
@@ -26,7 +25,7 @@ fun getCircularDraw(context: Context): CircularProgressDrawable =
     CircularProgressDrawable(context).apply {
         strokeWidth = 8f
         centerRadius = 48f
-        setTint(ContextCompat.getColor(context, R.color.teal_700))
+        setTint(context.resources.getColor(R.color.backgroundLineColor))
         start()
     }
 
