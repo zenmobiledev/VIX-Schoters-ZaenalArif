@@ -21,4 +21,6 @@
     <string name="tv_phone_number">Phone Number</string>
     <string name="tv_address">Address</string>
     <string name="my_address">Jl. H. Maisin, Petukangan Utara,\nPesanggrahan, Ciledug, \nJakartaSelatan.</string>
+    <string name="content_address">Address</string>
+    <string name="content_name">Name</string>
 </resources>
