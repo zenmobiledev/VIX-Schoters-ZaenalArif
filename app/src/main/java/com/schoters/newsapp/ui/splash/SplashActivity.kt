@@ -9,7 +9,7 @@ import com.schoters.newsapp.MainActivity
 import com.schoters.newsapp.R
 
 class SplashActivity : AppCompatActivity() {
-    private val time: Long = 3000
+    private val time: Long = 2860
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
