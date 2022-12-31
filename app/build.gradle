@@ -79,6 +79,9 @@ dependencies {
     def circleImageVersion = "3.1.0"
     implementation("de.hdodenhof:circleimageview:$circleImageVersion")
 
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
