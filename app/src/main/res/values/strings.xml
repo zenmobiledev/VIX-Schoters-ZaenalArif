@@ -10,4 +10,15 @@
     <string name="content_item_article">Item Article</string>
     <string name="content_item_bookmark">Item Bookmark</string>
     <string name="hint_search">Search</string>
+    <string name="my_name">Zaenal Arif</string>
+    <string name="description">Mobile Application Developer</string>
+    <string name="my_email">zaenalariftech@gmail.com</string>
+    <string name="content_email">Email</string>
+    <string name="content_phone_number">Phone Number</string>
+    <string name="my_phone_number">+62 813–8477–4988 ( WA )</string>
+    <string name="tv_name">Name</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_phone_number">Phone Number</string>
+    <string name="tv_address">Address</string>
+    <string name="my_address">Jl. H. Maisin, Petukangan Utara,\nPesanggrahan, Ciledug, \nJakartaSelatan.</string>
 </resources>
