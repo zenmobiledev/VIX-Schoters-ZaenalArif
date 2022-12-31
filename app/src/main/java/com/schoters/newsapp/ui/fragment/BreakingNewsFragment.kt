@@ -1,10 +1,10 @@
 package com.schoters.newsapp.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -39,9 +39,16 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = (activity as MainActivity).viewModel
+        setupRecycleView()
+        setupViewModelObserver()
+    }
+
     private fun setupRecycleView() {
         newsAdapter = ArticleAdapter()
-
         binding.rvBreakingNews.apply {
             adapter = newsAdapter
             layoutManager = LinearLayoutManager(activity)
@@ -56,30 +63,21 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 bundle
             )
         }
+
         newsAdapter.onSaveClickListener {
             if (it.id == null) {
-                it.id = Random.nextInt(0, 1000);
+                it.id = Random.nextInt(0, 1000)
             }
             viewModel.insertArticle(it)
             Snackbar.make(requireView(), "Saved", Snackbar.LENGTH_SHORT).show()
         }
-
         newsAdapter.onDeleteClickListener {
             viewModel.deleteArticle(it)
             Snackbar.make(requireView(), "Removed", Snackbar.LENGTH_SHORT).show()
         }
-
         newsAdapter.onShareNewsClickListener {
             shareNews(context, it)
         }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel = (activity as MainActivity).viewModel
-        setupRecycleView()
-        setupViewModelObserver()
     }
 
     private fun setupViewModelObserver() {
@@ -97,7 +95,8 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                 is Resource.Error -> {
                     binding.shimmerFrameLayout.visibility = View.GONE
                     response.message?.let { message ->
-                        Log.e(TAG, "Error: $message")
+                        Toast.makeText(activity, "An error occurred: $message", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
 
@@ -111,9 +110,5 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-        private const val TAG = "BreakingNewsFragment"
     }
 }

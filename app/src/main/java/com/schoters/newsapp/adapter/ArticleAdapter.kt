@@ -33,7 +33,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
 
         holder.itemView.setOnClickListener {
             onItemClickListener?.let {
-                article.let { article -> it(article) }
+                it(article)
             }
         }
 
@@ -69,8 +69,6 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
 
     override fun getItemCount(): Int = diff.currentList.size
 
-    var isSave = false
-
     override fun getItemId(position: Int): Long = position.toLong()
 
     private var onItemClickListener: ((Article) -> Unit)? = null
@@ -100,7 +98,7 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
                 oldItem.url == newItem.url
 
             override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
-                newItem.title == oldItem.title
+                oldItem == newItem
         }
     }
 }

@@ -17,7 +17,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val newsRepository = NewsRepository(ArticleDatabase(this))
-        val viewModelFactory = NewsViewModelFactory(newsRepository = newsRepository)
+        val viewModelFactory =
+            NewsViewModelFactory(newsRepository = newsRepository, app = application)
         viewModel =
             ViewModelProvider(this, viewModelFactory)[NewsViewModel::class.java]
         setContentView(R.layout.activity_main)

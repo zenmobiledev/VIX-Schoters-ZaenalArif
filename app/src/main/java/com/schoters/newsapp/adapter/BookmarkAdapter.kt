@@ -14,7 +14,7 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>
 
     private val diffUtil = object : DiffUtil.ItemCallback<Article>() {
         override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
-            oldItem.url == oldItem.url
+            oldItem.url == newItem.url
 
         override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
             oldItem.id == newItem.id
@@ -43,13 +43,13 @@ class BookmarkAdapter : RecyclerView.Adapter<BookmarkAdapter.BookmarkViewHolder>
 
         holder.itemView.setOnClickListener {
             onItemClickListener?.let {
-                article.let { article -> it(article) }
+                article?.let { article -> it(article) }
             }
         }
 
         holder.view.imageViewShare.setOnClickListener {
             onShareNewsClick?.let {
-                article.let { it1 -> it(it1) }
+                article?.let { it1 -> it(it1) }
             }
         }
     }

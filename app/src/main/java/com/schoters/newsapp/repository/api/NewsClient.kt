@@ -23,7 +23,7 @@ class NewsClient {
                 .build()
         }
 
-        val api by lazy {
+        val api: NewsApi by lazy {
             newsClient.create(NewsApi::class.java)
         }
     }

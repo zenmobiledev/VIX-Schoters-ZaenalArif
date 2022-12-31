@@ -32,7 +32,7 @@ fun getCircularDraw(context: Context): CircularProgressDrawable =
 fun ImageView.loadImage(url: String, progressDraw: CircularProgressDrawable) {
     val options = RequestOptions()
         .placeholder(progressDraw)
-        .error(R.drawable.ic_launcher_background)
+        .error(R.drawable.ic_broken_image)
     Glide.with(context)
         .setDefaultRequestOptions(options)
         .load(url)

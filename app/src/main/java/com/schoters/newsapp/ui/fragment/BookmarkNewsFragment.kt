@@ -1,7 +1,6 @@
 package com.schoters.newsapp.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,27 +33,12 @@ class BookmarkNewsFragment : Fragment(R.layout.fragment_bookmark_news) {
         return view
     }
 
-    private fun setupRecycleView() {
-        newsAdapter = BookmarkAdapter()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        binding.rvBookmarkNews.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
-        }
-
-        newsAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("article", it)
-            }
-            findNavController().navigate(
-                R.id.action_savedNewsFragment_to_articleFragment,
-                bundle
-            )
-        }
-
-        newsAdapter.onShareNewsClickListener {
-            shareNews(context, it)
-        }
+        viewModel = (activity as MainActivity).viewModel
+        setupRecycleView()
+        setupViewModelObserver()
 
         val onItemSwipeHelperCallback = object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.UP or ItemTouchHelper.DOWN,
@@ -82,21 +66,14 @@ class BookmarkNewsFragment : Fragment(R.layout.fragment_bookmark_news) {
         ItemTouchHelper(onItemSwipeHelperCallback).apply {
             attachToRecyclerView(binding.rvBookmarkNews)
         }
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        viewModel = (activity as MainActivity).viewModel
-        setupRecycleView()
-        setupViewModelObserver()
     }
 
     private fun setupViewModelObserver() {
         viewModel = (activity as MainActivity).viewModel
 
         viewModel.getBookmarkArticles().observe(viewLifecycleOwner, Observer {
-            Log.i(TAG, "setupViewModelObserver: ${it.size}")
             newsAdapter.diff.submitList(it)
             binding.apply {
                 rvBookmarkNews.visibility = View.VISIBLE
@@ -106,13 +83,32 @@ class BookmarkNewsFragment : Fragment(R.layout.fragment_bookmark_news) {
         })
     }
 
+    private fun setupRecycleView() {
+        newsAdapter = BookmarkAdapter()
+
+        binding.rvBookmarkNews.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_savedNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
+
+        newsAdapter.onShareNewsClickListener {
+            viewModel.insertArticle(it)
+            shareNews(context, it)
+        }
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-
-    companion object {
-        private const val TAG = "BookmarkNewsFragment"
     }
 }

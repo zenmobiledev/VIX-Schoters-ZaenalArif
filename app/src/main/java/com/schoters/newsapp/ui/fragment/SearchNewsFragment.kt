@@ -1,10 +1,10 @@
 package com.schoters.newsapp.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -22,6 +22,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     lateinit var viewModel: NewsViewModel
@@ -49,32 +50,10 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 putSerializable("article", it)
             }
             findNavController().navigate(
-                R.id.action_breakingNewsFragment_to_articleFragment,
+                R.id.action_searchNewsFragment_to_articleFragment,
                 bundle
             )
         }
-        newsAdapter.onSaveClickListener {
-            viewModel.insertArticle(it)
-            Snackbar.make(requireView(), "Saved", Snackbar.LENGTH_SHORT).show()
-        }
-
-        newsAdapter.onDeleteClickListener {
-            viewModel.deleteArticle(it)
-            Snackbar.make(requireView(), "Removed", Snackbar.LENGTH_SHORT).show()
-        }
-
-        newsAdapter.onShareNewsClickListener {
-            shareNews(context, it)
-        }
-    }
-
-    private fun setupRecycleView() {
-        newsAdapter = ArticleAdapter()
-        binding.rvSearchNews.apply {
-            adapter = newsAdapter
-            layoutManager = LinearLayoutManager(activity)
-        }
-
 
         var searchJob: Job? = null
         binding.editTextSearch.addTextChangedListener { edit ->
@@ -82,7 +61,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             searchJob = MainScope().launch {
                 delay(SEARCH_TIME_DELAY)
                 edit?.let {
-                    if (!edit.toString().trim().isEmpty()) {
+                    if (edit.toString().isNotEmpty()) {
                         viewModel.getSearchedNews(edit.toString())
                     }
                 }
@@ -104,7 +83,12 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                         shimmerFrameLayout.stopShimmer()
                         shimmerFrameLayout.visibility = View.GONE
                         response.message?.let { message ->
-                            Log.e(TAG, "Error: $message")
+                            Toast.makeText(
+                                activity,
+                                "An error occurred: $message",
+                                Toast.LENGTH_SHORT
+                            )
+                                .show()
                         }
                     }
                 }
@@ -117,6 +101,26 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                 }
             }
         })
+
+        newsAdapter.onSaveClickListener {
+            if (it.id == null) {
+                it.id = Random.nextInt(0, 1000)
+            }
+            viewModel.insertArticle(it)
+            Snackbar.make(requireView(), "Saved", Snackbar.LENGTH_SHORT).show()
+        }
+
+        newsAdapter.onShareNewsClickListener {
+            shareNews(context, it)
+        }
+    }
+
+    private fun setupRecycleView() {
+        newsAdapter = ArticleAdapter()
+        binding.rvSearchNews.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
     }
 
     override fun onDestroyView() {
@@ -125,7 +129,6 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
     }
 
     companion object {
-        private const val TAG = "SearchNewsFragment"
         private const val SEARCH_TIME_DELAY = 500L
     }
 }

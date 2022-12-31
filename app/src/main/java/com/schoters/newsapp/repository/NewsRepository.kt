@@ -13,7 +13,7 @@ class NewsRepository(val database: ArticleDatabase) {
 
     suspend fun upsert(article: Article) = database.getArticleDao().insert(article = article)
 
-    suspend fun delete(article: Article) = database.getArticleDao().deleteArticle(article = article)
-
     fun getAllArticles() = database.getArticleDao().getArticles()
+
+    suspend fun delete(article: Article) = database.getArticleDao().deleteArticle(article = article)
 }
