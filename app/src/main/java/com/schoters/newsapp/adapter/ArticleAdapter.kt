@@ -97,11 +97,10 @@ class ArticleAdapter : RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder>() 
     companion object {
         private val diffUtil = object : DiffUtil.ItemCallback<Article>() {
             override fun areItemsTheSame(oldItem: Article, newItem: Article): Boolean =
-                oldItem.title == oldItem.title
+                oldItem.url == newItem.url
 
             override fun areContentsTheSame(oldItem: Article, newItem: Article): Boolean =
-                newItem.title == newItem.title
-
+                newItem.title == oldItem.title
         }
     }
 }

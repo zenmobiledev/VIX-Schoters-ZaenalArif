@@ -1,20 +1,118 @@
 package com.schoters.newsapp.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
+import com.schoters.newsapp.MainActivity
 import com.schoters.newsapp.R
+import com.schoters.newsapp.adapter.BookmarkAdapter
+import com.schoters.newsapp.databinding.FragmentBookmarkNewsBinding
+import com.schoters.newsapp.repository.viewmodel.NewsViewModel
+import com.schoters.newsapp.utils.shareNews
 
-class BookmarkNewsFragment : Fragment() {
-
+class BookmarkNewsFragment : Fragment(R.layout.fragment_bookmark_news) {
+    lateinit var viewModel: NewsViewModel
+    lateinit var newsAdapter: BookmarkAdapter
+    private var _binding: FragmentBookmarkNewsBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bookmark_news, container, false)
+        _binding = FragmentBookmarkNewsBinding.inflate(inflater, container, false)
+        val view = binding.root
+        return view
     }
 
+    private fun setupRecycleView() {
+        newsAdapter = BookmarkAdapter()
+
+        binding.rvBookmarkNews.apply {
+            adapter = newsAdapter
+            layoutManager = LinearLayoutManager(activity)
+        }
+
+        newsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("article", it)
+            }
+            findNavController().navigate(
+                R.id.action_savedNewsFragment_to_articleFragment,
+                bundle
+            )
+        }
+
+        newsAdapter.onShareNewsClickListener {
+            shareNews(context, it)
+        }
+
+        val onItemSwipeHelperCallback = object : ItemTouchHelper.SimpleCallback(
+            ItemTouchHelper.UP or ItemTouchHelper.DOWN,
+            ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+        ) {
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean = true
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val article = newsAdapter.diff.currentList[position]
+                viewModel.deleteArticle(article)
+
+                Snackbar.make(requireView(), "Delete Successfully", Snackbar.LENGTH_SHORT).apply {
+                    setAction("Undo") {
+                        viewModel.insertArticle(article)
+                    }
+                    show()
+                }
+            }
+        }
+        ItemTouchHelper(onItemSwipeHelperCallback).apply {
+            attachToRecyclerView(binding.rvBookmarkNews)
+        }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel = (activity as MainActivity).viewModel
+        setupRecycleView()
+        setupViewModelObserver()
+    }
+
+    private fun setupViewModelObserver() {
+        viewModel = (activity as MainActivity).viewModel
+
+        viewModel.getBookmarkArticles().observe(viewLifecycleOwner, Observer {
+            Log.i(TAG, "setupViewModelObserver: ${it.size}")
+            newsAdapter.diff.submitList(it)
+            binding.apply {
+                rvBookmarkNews.visibility = View.VISIBLE
+                shimmerFrameLayout.stopShimmer()
+                shimmerFrameLayout.visibility = View.GONE
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
+    companion object {
+        private const val TAG = "BookmarkNewsFragment"
+    }
 }

@@ -7,4 +7,6 @@
     <string name="title_botnav_search">Search</string>
     <string name="title_botnav_saved">Saved</string>
     <string name="title_botnav_about">About</string>
+    <string name="content_item_article">Item Article</string>
+    <string name="content_item_bookmark">Item Bookmark</string>
 </resources>
