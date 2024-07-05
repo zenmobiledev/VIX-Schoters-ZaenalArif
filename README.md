@@ -28,6 +28,10 @@ For more details.
 | Splash                                                  | Home Page                                       | Detail Page                                         | Search Page                                         | Saved Page                                        | About Page                                        |
 |---------------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
 | ![splash screen](app/src/main/assets/splash_screen.png) | ![home page](app/src/main/assets/home_page.png) | ![detail page](app/src/main/assets/detail_page.png) | ![search page](app/src/main/assets/search_page.png) | ![saved page](app/src/main/assets/saved_page.png) | ![about page](app/src/main/assets/about_page.png) |
+
+ | Preview                                                |
+ |--------------------------------------------------------|
+ | ![Video Nihon App](app/src/main/assets/nihon_app.gif)  |
 ## Tech Stack
 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android
