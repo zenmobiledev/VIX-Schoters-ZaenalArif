@@ -1,73 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical"
+    android:background="@drawable/radius_bg"
     tools:context=".ui.fragment.AboutFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/top_background"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/image_view_profile_picture"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/zaenal_arif"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/text_view_my_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/aileron_semibold"
-        android:text="@string/my_name"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/image_view_profile_picture"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@id/image_view_profile_picture"
-        app:layout_constraintTop_toBottomOf="@id/image_view_profile_picture" />
-
-    <TextView
-        android:id="@+id/text_view_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:fontFamily="@font/aileron_regular"
-        android:text="@string/description"
-        android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@id/text_view_my_name"
-        app:layout_constraintStart_toStartOf="@id/text_view_my_name"
-        app:layout_constraintTop_toBottomOf="@id/text_view_my_name" />
-
-    <LinearLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:background="@drawable/background_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_view_description">
+        android:layout_height="250dp"
+        android:background="@drawable/top_background"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/radius_bg"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextColor="@color/white"
+            app:collapsedTitleGravity="center"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleTextColor="@color/black"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="About Me">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center|end"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/zaenal_arif"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/layout_bg"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp">
 
             <ImageView
                 android:id="@+id/icon_name"
@@ -197,5 +183,202 @@
                 app:layout_constraintStart_toStartOf="@+id/text_view_address"
                 app:layout_constraintTop_toBottomOf="@+id/text_view_address" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@+id/imageView"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:src="@drawable/top_background"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <de.hdodenhof.circleimageview.CircleImageView-->
+    <!--            android:id="@+id/image_view_profile_picture"-->
+    <!--            android:layout_width="120dp"-->
+    <!--            android:layout_height="120dp"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:src="@drawable/zaenal_arif"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/text_view_my_name"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:fontFamily="@font/aileron_semibold"-->
+    <!--            android:text="@string/my_name"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            android:textSize="16sp"-->
+    <!--            app:layout_constraintEnd_toEndOf="@id/image_view_profile_picture"-->
+    <!--            app:layout_constraintHorizontal_bias="0.5"-->
+    <!--            app:layout_constraintStart_toStartOf="@id/image_view_profile_picture"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/image_view_profile_picture" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/text_view_description"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="7dp"-->
+    <!--            android:fontFamily="@font/aileron_regular"-->
+    <!--            android:text="@string/description"-->
+    <!--            android:textColor="@color/white"-->
+    <!--            app:layout_constraintEnd_toEndOf="@id/text_view_my_name"-->
+    <!--            app:layout_constraintStart_toStartOf="@id/text_view_my_name"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/text_view_my_name" />-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginLeft="20dp"-->
+    <!--            android:layout_marginTop="20dp"-->
+    <!--            android:layout_marginRight="20dp"-->
+    <!--            android:background="@drawable/background_description"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/text_view_description">-->
+
+    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="match_parent"-->
+    <!--                android:layout_margin="10dp">-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/icon_name"-->
+    <!--                    android:layout_width="50dp"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_margin="10dp"-->
+    <!--                    android:contentDescription="@string/content_name"-->
+    <!--                    android:src="@drawable/ic_name"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/text_view_name"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="@string/tv_name"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="14sp"-->
+    <!--                    android:textStyle="bold"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/icon_name"-->
+    <!--                    app:layout_constraintTop_toTopOf="@+id/icon_name" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/my_name"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="3dp"-->
+    <!--                    android:text="@string/my_name"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    app:layout_constraintStart_toStartOf="@+id/text_view_name"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@+id/text_view_name" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/icon_phone_number"-->
+    <!--                    android:layout_width="50dp"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_margin="10dp"-->
+    <!--                    android:contentDescription="@string/content_phone_number"-->
+    <!--                    android:src="@drawable/ic_mobile"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@id/icon_name" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/text_view_phone_number"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="@string/tv_phone_number"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="14sp"-->
+    <!--                    android:textStyle="bold"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/icon_phone_number"-->
+    <!--                    app:layout_constraintTop_toTopOf="@+id/icon_phone_number" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/my_phone_number"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="3dp"-->
+    <!--                    android:text="@string/my_phone_number"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    app:layout_constraintStart_toStartOf="@+id/text_view_phone_number"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@+id/text_view_phone_number" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/icon_email"-->
+    <!--                    android:layout_width="50dp"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_margin="10dp"-->
+    <!--                    android:contentDescription="@string/content_email"-->
+    <!--                    android:src="@drawable/ic_email"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@id/icon_phone_number" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/text_view_email"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="@string/tv_email"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="14sp"-->
+    <!--                    android:textStyle="bold"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/icon_email"-->
+    <!--                    app:layout_constraintTop_toTopOf="@+id/icon_email" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/my_email"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="3dp"-->
+    <!--                    android:text="@string/my_email"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    app:layout_constraintStart_toStartOf="@+id/text_view_email"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@+id/text_view_email" />-->
+
+    <!--                <ImageView-->
+    <!--                    android:id="@+id/icon_address"-->
+    <!--                    android:layout_width="50dp"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_margin="10dp"-->
+    <!--                    android:contentDescription="@string/content_address"-->
+    <!--                    android:src="@drawable/ic_address"-->
+    <!--                    app:layout_constraintStart_toStartOf="parent"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@id/icon_email" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/text_view_address"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginStart="10dp"-->
+    <!--                    android:text="@string/tv_address"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    android:textSize="14sp"-->
+    <!--                    android:textStyle="bold"-->
+    <!--                    app:layout_constraintStart_toEndOf="@+id/icon_address"-->
+    <!--                    app:layout_constraintTop_toTopOf="@+id/icon_address" />-->
+
+    <!--                <TextView-->
+    <!--                    android:id="@+id/my_address"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="wrap_content"-->
+    <!--                    android:layout_marginTop="3dp"-->
+    <!--                    android:text="@string/my_address"-->
+    <!--                    android:textColor="@color/black"-->
+    <!--                    app:layout_constraintStart_toStartOf="@+id/text_view_address"-->
+    <!--                    app:layout_constraintTop_toBottomOf="@+id/text_view_address" />-->
+    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--        </LinearLayout>-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
