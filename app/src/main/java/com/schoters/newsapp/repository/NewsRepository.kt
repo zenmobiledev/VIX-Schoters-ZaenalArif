@@ -4,7 +4,7 @@ import com.schoters.newsapp.model.Article
 import com.schoters.newsapp.repository.api.NewsClient
 import com.schoters.newsapp.repository.database.ArticleDatabase
 
-class NewsRepository(val database: ArticleDatabase) {
+class NewsRepository(private val database: ArticleDatabase) {
     suspend fun getBreakingNews(countryCode: String, pageNumber: Int) =
         NewsClient.api.getBreakingNews(country = countryCode, pageNumber = pageNumber)
 

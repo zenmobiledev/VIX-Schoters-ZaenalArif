@@ -21,6 +21,7 @@
             android:fitsSystemWindows="true"
             app:collapsedTitleTextColor="@color/white"
             app:collapsedTitleGravity="center"
+            app:titleCollapseMode="scale"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextColor="@color/black"
             app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"

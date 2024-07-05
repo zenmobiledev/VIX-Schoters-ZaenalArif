@@ -73,14 +73,14 @@ class BookmarkNewsFragment : Fragment(R.layout.fragment_bookmark_news) {
     private fun setupViewModelObserver() {
         viewModel = (activity as MainActivity).viewModel
 
-        viewModel.getBookmarkArticles().observe(viewLifecycleOwner, Observer {
+        viewModel.getBookmarkArticles().observe(viewLifecycleOwner) {
             newsAdapter.diff.submitList(it)
             binding.apply {
                 rvBookmarkNews.visibility = View.VISIBLE
                 shimmerFrameLayout.stopShimmer()
                 shimmerFrameLayout.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun setupRecycleView() {

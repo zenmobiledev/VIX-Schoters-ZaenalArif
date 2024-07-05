@@ -29,13 +29,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_rounded"
-        app:itemIconSize="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         app:itemIconTint="@color/selector"
-        app:itemPaddingTop="3dp"
         app:itemTextColor="@color/selector"
         app:labelVisibilityMode="selected"
         app:layout_constraintBottom_toBottomOf="parent"

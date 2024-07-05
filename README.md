@@ -25,11 +25,9 @@ For more details.
 > terbaru dari berbagai kategori seperti hiburan, teknologi, budaya, dan banyak lagi.
 
 ## Demo
-
-| Splash                                     | Home Page                              | Detail Page                              | Search Page                              | Saved Page                              | About Page                              
-|--------------------------------------------|----------------------------------------|------------------------------------------|------------------------------------------|-----------------------------------------|-----------------------------------------|
-| ![](app/src/main/assets/splash_screen.png) | ![](app/src/main/assets/home_page.png) | ![](app/src/main/assets/detail_page.png) | ![](app/src/main/assets/search_page.png) | ![](app/src/main/assets/saved_page.png) | ![](app/src/main/assets/about_page.png) |
-
+| Splash                                                  | Home Page                                       | Detail Page                                         | Search Page                                         | Saved Page                                        | About Page                                        |
+|---------------------------------------------------------|-------------------------------------------------|-----------------------------------------------------|-----------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
+| ![splash screen](app/src/main/assets/splash_screen.png) | ![home page](app/src/main/assets/home_page.png) | ![detail page](app/src/main/assets/detail_page.png) | ![search page](app/src/main/assets/search_page.png) | ![saved page](app/src/main/assets/saved_page.png) | ![about page](app/src/main/assets/about_page.png) |
 ## Tech Stack
 
 - [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android

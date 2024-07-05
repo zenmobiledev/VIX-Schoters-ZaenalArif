@@ -24,8 +24,6 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     private lateinit var viewModel: NewsViewModel
     private lateinit var newsAdapter: ArticleAdapter
 
-    //    private val rvBreakingNews = view?.findViewById<RecyclerView>(R.id.rv_breaking_news)
-//    private val shimmer = view?.findViewById<ShimmerFrameLayout>(R.id.shimmerFrameLayout)
     private var _binding: FragmentBreakingNewsBinding? = null
     private val binding get() = _binding!!
 
@@ -81,14 +79,14 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
     }
 
     private fun setupViewModelObserver() {
-        viewModel.breakingNews.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.breakingNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
                     binding.shimmerFrameLayout.stopShimmer()
                     binding.shimmerFrameLayout.visibility = View.GONE
                     response.data?.let { news ->
                         binding.rvBreakingNews.visibility = View.VISIBLE
-                        newsAdapter.diff.submitList(news.articles)
+                        newsAdapter.submitList(news.articles)
                     }
                 }
 
@@ -104,7 +102,7 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
                     binding.shimmerFrameLayout.startShimmer()
                 }
             }
-        })
+        }
     }
 
     override fun onDestroyView() {

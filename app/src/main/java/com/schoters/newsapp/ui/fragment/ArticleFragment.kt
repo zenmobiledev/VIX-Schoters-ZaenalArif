@@ -15,8 +15,8 @@ import com.schoters.newsapp.repository.viewmodel.NewsViewModel
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
 
-    lateinit var viewModel: NewsViewModel
-    val args: ArticleFragmentArgs by navArgs()
+    private lateinit var viewModel: NewsViewModel
+    private val args: ArticleFragmentArgs by navArgs()
     private var _binding: FragmentArticleBinding? = null
     private val binding get() = _binding!!
 

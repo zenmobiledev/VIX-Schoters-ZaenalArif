@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -18,15 +17,11 @@ import com.schoters.newsapp.databinding.FragmentSearchNewsBinding
 import com.schoters.newsapp.repository.viewmodel.NewsViewModel
 import com.schoters.newsapp.utils.Resource
 import com.schoters.newsapp.utils.shareNews
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
-    lateinit var viewModel: NewsViewModel
-    lateinit var newsAdapter: ArticleAdapter
+    private lateinit var viewModel: NewsViewModel
+    private lateinit var newsAdapter: ArticleAdapter
     private var _binding: FragmentSearchNewsBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -55,27 +50,16 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
             )
         }
 
-        var searchJob: Job? = null
-        binding.editTextSearch.addTextChangedListener { edit ->
-            searchJob?.cancel()
-            searchJob = MainScope().launch {
-                delay(SEARCH_TIME_DELAY)
-                edit?.let {
-                    if (edit.toString().isNotEmpty()) {
-                        viewModel.getSearchedNews(edit.toString())
-                    }
-                }
-            }
-        }
+        setSearchNews()
 
-        viewModel.searchNews.observe(viewLifecycleOwner, Observer { response ->
+        viewModel.searchNews.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is Resource.Success -> {
                     binding.apply {
                         shimmerFrameLayout.stopShimmer()
                         shimmerFrameLayout.visibility = View.GONE
                     }
-                    response.data?.let { news -> newsAdapter.diff.submitList(news.articles) }
+                    response.data?.let { news -> newsAdapter.submitList(news.articles.toList()) }
                 }
 
                 is Resource.Error -> {
@@ -100,7 +84,7 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
                     }
                 }
             }
-        })
+        }
 
         newsAdapter.onSaveClickListener {
             if (it.id == null) {
@@ -112,6 +96,29 @@ class SearchNewsFragment : Fragment(R.layout.fragment_search_news) {
 
         newsAdapter.onShareNewsClickListener {
             shareNews(context, it)
+        }
+    }
+
+    private fun setSearchNews() {
+
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { _, _, _ ->
+                    val queryText = searchView.text.toString()
+                    if (queryText.isEmpty()) {
+                        Toast.makeText(
+                            requireActivity(),
+                            "cannot be empty",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        viewModel.getSearchedNews(queryText)
+                        searchView.hide()
+                    }
+                    false
+                }
         }
     }
 
