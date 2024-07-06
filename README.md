@@ -1,6 +1,6 @@
 # VIX-Schoters-ZaenalArif / NihonNews
 
-[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html) [![Kotlin](https://img.shields.io/badge/kotlin-1.7.10-orange.svg)](http://kotlinlang.org) [![Gradle](https://img.shields.io/badge/gradle-4.1.1-%2366DCB8.svg)](https://developer.android.com/studio/releases/gradle-plugin)
+[![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html) [![Kotlin](https://img.shields.io/badge/kotlin-1.7.10-orange.svg)](http://kotlinlang.org) [![Gradle](https://img.shields.io/badge/gradle-7.5-%2366DCB8.svg)](https://developer.android.com/studio/releases/gradle-plugin)
 
 # Table Of Contents
 
@@ -34,12 +34,12 @@ For more details.
  | ![Video Nihon App](app/src/main/assets/nihon_app.gif) |
 ## Tech Stack
 
-- [Kotlin](https://kotlinlang.org/) - First class and official programming language for Android
-  development.
-- [Glide](https://github.com/bumptech/glide) - An image loading and caching library for Android
-  focused on smooth scrolling
-- [Material Design](https://material.io/develop/android/docs/getting-started) - Material is a design
-  system created by Google to help teams build high-quality digital experiences for Android, iOS,
-  Flutter, and the web.
-- [LottieFiles](https://lottiefiles.com/) - LottieFiles provides all the tools that you need to
-  create, edit, test and display Lottie animations.
+- [Kotlin](https://kotlinlang.org/): First class and official programming language for Android development.
+- [Coroutine](https://kotlinlang.org/spec/asynchronous-programming-with-coroutines.html#coroutines): Kotlin library for asynchronous and concurrent programming, providing support for suspending functions. 
+- [LifeCycle](https://developer.android.com/topic/libraries/architecture/lifecycle?hl=en): Components to handle Android lifecycle-aware tasks, including ViewModel and LiveData support. 
+- [Glide](https://github.com/bumptech/glide): An image loading and caching library for Android focused on smooth scrolling
+- [Material Design](https://material.io/develop/android/docs/getting-started): Material is a design system created by Google to help teams build high-quality digital experiences for Android, iOS, Flutter, and the web.
+- [ROOM](https://developer.android.com/jetpack/androidx/releases/room?hl=en): A persistence library that provides an abstraction layer over SQLite to allow for more robust database access while harnessing the full power of SQLite.
+- [Shimmer-Android](https://github.com/facebookarchive/shimmer-android): Library to add a shimmering effect to any view in your Android app, enhancing UI interactions.
+- [CircleImageView](https://github.com/hdodenhof/CircleImageView): Custom ImageView that displays images as circles, useful for avatar or profile picture views.
+- [Retrofit](https://github.com/square/retrofit): A type-safe HTTP client for Android and Java used to handle REST API calls and network requests in a concise and efficient manner.
