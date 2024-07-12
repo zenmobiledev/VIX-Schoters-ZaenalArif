@@ -1,7 +1,9 @@
-package com.schoters.newsapp.adapter
+package com.schoters.newsapp.ui.fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -52,31 +54,62 @@ class ArticleAdapter : ListAdapter<Article, ArticleAdapter.ArticleViewHolder>(DI
                 }
             }
 
-            binding.imageViewSaved.setOnClickListener { it ->
-                if (binding.imageViewSaved.tag.toString().toInt() == 0) {
-                    binding.imageViewSaved.tag = 1
-//                    binding.imageViewSaved.setImageDrawable(it.resources.getDrawable(R.drawable.ic_saved))
-                    binding.imageViewSaved.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            binding.root.context,
-                            R.drawable.ic_saved
-                        )
-                    )
-                    onArticleSaveClick?.let { click ->
-                        click(article)
+            with(binding) {
+                constraintLayout.setTransitionListener(object :
+                    MotionLayout.TransitionListener {
+                    override fun onTransitionStarted(
+                        motionLayout: MotionLayout?,
+                        startId: Int,
+                        endId: Int
+                    ) {
+
                     }
-                } else {
-                    binding.imageViewSaved.tag = 0
-                    binding.imageViewSaved.setImageDrawable(
-                        ContextCompat.getDrawable(
-                            binding.root.context,
-                            R.drawable.ic_bookmark
-                        )
-                    )
-                    onArticleSaveClick?.let { click ->
-                        click(article)
+
+                    override fun onTransitionChange(
+                        motionLayout: MotionLayout?,
+                        startId: Int,
+                        endId: Int,
+                        progress: Float
+                    ) {
+
                     }
-                }
+
+                    override fun onTransitionCompleted(
+                        motionLayout: MotionLayout?,
+                        currentId: Int
+                    ) {
+                        if (currentId == R.id.end) {
+                            motionLayout?.post {
+                                motionLayout.transitionToState(R.id.start)
+                                motionLayout.progress = 0F
+                                onArticleSaveClick?.let { click ->
+                                    click(article)
+                                }
+                            }
+                        }
+                    }
+
+                    override fun onTransitionTrigger(
+                        motionLayout: MotionLayout?,
+                        triggerId: Int,
+                        positive: Boolean,
+                        progress: Float
+                    ) {
+                        if (positive && triggerId == R.id.image_view_saved) {
+                            imageViewSaved.setOnClickListener {
+                                Toast.makeText(
+                                    itemView.context,
+                                    "SAVED",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                motionLayout?.transitionToEnd()
+                            }
+                        }
+
+                    }
+
+                })
+
             }
         }
     }

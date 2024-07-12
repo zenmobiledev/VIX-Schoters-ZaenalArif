@@ -1,4 +1,4 @@
-package com.schoters.newsapp.adapter
+package com.schoters.newsapp.ui.fragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

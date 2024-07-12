@@ -7,6 +7,7 @@ import com.schoters.newsapp.repository.NewsRepository
 
 class NewsViewModelFactory(val app: Application, val newsRepository: NewsRepository) :
     ViewModelProvider.Factory {
+    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         NewsViewModel(newsRepository = newsRepository, app = app) as T
 }

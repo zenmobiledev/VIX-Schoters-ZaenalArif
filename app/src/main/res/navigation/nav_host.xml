@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/breakingNewsFragment"
-        android:name="com.schoters.newsapp.ui.fragment.BreakingNewsFragment"
+        android:name="com.schoters.newsapp.ui.fragment.features.home.BreakingNewsFragment"
         android:label="fragment_breaking_news"
         tools:layout="@layout/fragment_breaking_news">
         <action
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/searchNewsFragment"
-        android:name="com.schoters.newsapp.ui.fragment.SearchNewsFragment"
+        android:name="com.schoters.newsapp.ui.fragment.features.search.SearchNewsFragment"
         android:label="fragment_search_news"
         tools:layout="@layout/fragment_search_news">
         <action
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/savedNewsFragment"
-        android:name="com.schoters.newsapp.ui.fragment.BookmarkNewsFragment"
+        android:name="com.schoters.newsapp.ui.fragment.features.saved.BookmarkNewsFragment"
         android:label="fragment_saved_news"
         tools:layout="@layout/fragment_bookmark_news">
         <action
@@ -49,7 +49,7 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        android:name="com.schoters.newsapp.ui.fragment.AboutFragment"
+        android:name="com.schoters.newsapp.ui.fragment.features.about.AboutFragment"
         android:label="fragment_about_news"
         tools:layout="@layout/fragment_about">
         <action

@@ -20,7 +20,7 @@ For more details.
 
 - Indonesia
 
-> NihonNews adalah aplikasi berita yang memberikan informasi terkini dan relevan dari Jepang. Dengan
+> _NihonNews_ adalah aplikasi berita yang memberikan informasi terkini dan relevan dari Jepang. Dengan
 > antarmuka yang bersih dan mudah digunakan, NihonNews memastikan Anda tetap up-to-date dengan berita
 > terbaru dari berbagai kategori seperti hiburan, teknologi, budaya, dan banyak lagi.
 
@@ -43,3 +43,4 @@ For more details.
 - [Shimmer-Android](https://github.com/facebookarchive/shimmer-android): Library to add a shimmering effect to any view in your Android app, enhancing UI interactions.
 - [CircleImageView](https://github.com/hdodenhof/CircleImageView): Custom ImageView that displays images as circles, useful for avatar or profile picture views.
 - [Retrofit](https://github.com/square/retrofit): A type-safe HTTP client for Android and Java used to handle REST API calls and network requests in a concise and efficient manner.
+- [MotionLayout](https://developer.android.com/develop/ui/views/animations/motionlayout?hl=en): A library in the ConstraintLayout package for creating complex motion and widget animations in Android applications.

@@ -13,7 +13,7 @@ android {
         minSdk 21
         targetSdk 34
         versionCode 1
-        versionName "1.0"
+        versionName "1.1.4"
 
         buildConfigField("String", "NEWSAPP_TOKEN", '"9b3aa2c68752440d88d12ea0450b2817"')
 

@@ -1,11 +1,10 @@
-package com.schoters.newsapp.ui.fragment
+package com.schoters.newsapp.ui.fragment.features.saved
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.schoters.newsapp.MainActivity
 import com.schoters.newsapp.R
-import com.schoters.newsapp.adapter.BookmarkAdapter
+import com.schoters.newsapp.ui.fragment.adapter.BookmarkAdapter
 import com.schoters.newsapp.databinding.FragmentBookmarkNewsBinding
 import com.schoters.newsapp.repository.viewmodel.NewsViewModel
 import com.schoters.newsapp.utils.shareNews

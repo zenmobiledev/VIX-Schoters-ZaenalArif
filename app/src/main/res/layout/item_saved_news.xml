@@ -31,9 +31,6 @@
                 loadImage="@{article.urlToImage}"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
                 android:contentDescription="@string/tv_image_article"
                 android:scaleType="fitXY"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -111,13 +108,13 @@
                 android:id="@+id/image_view_share"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/content_item_bookmark"
                 android:padding="8dp"
                 android:src="@drawable/ic_share"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/background_line"
-                app:tint="@color/white"
-                android:contentDescription="@string/content_item_bookmark" />
+                app:layout_constraintEnd_toEndOf="@+id/background_line"
+                app:layout_constraintTop_toBottomOf="@+id/background_line"
+                app:tint="@color/white" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </layout>
